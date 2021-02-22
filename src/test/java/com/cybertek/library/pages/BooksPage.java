@@ -16,6 +16,12 @@ public class BooksPage extends BasePage {
     @FindBy(xpath = "//select[@id='book_categories']")
     public WebElement bookCategoriesDropDown;
 
+    @FindBy(xpath = "//a[@href='#borrowing-books']")
+    public WebElement borrowingBooksLink;
+
+    @FindBy(xpath = "//table[@id='borrowed_list']//th")
+    public List<WebElement> borrowingBooksHeaders;
+
     public List<String> actualHeaderList(){
         List<String> headerList = new ArrayList<>();
         for (WebElement webElement : tableHeader) {
@@ -30,6 +36,14 @@ public class BooksPage extends BasePage {
         List<String> list = new ArrayList<>();
         for (WebElement book : listOfBooks) {
             list.add(book.getText());
+        }
+        return list;
+    }
+
+    public List<String> borrowingBooksHeadersList(){
+        List<String> list = new ArrayList<>();
+        for (WebElement borrowingBooksHeader : borrowingBooksHeaders) {
+            list.add(borrowingBooksHeader.getText());
         }
         return list;
     }
