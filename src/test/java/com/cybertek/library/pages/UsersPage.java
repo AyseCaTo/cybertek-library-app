@@ -56,13 +56,11 @@ public class UsersPage extends BasePage {
     @FindBy(xpath = "(//a[@class='btn btn-primary btn-sm'])[1]")
     public WebElement editUserLink;
 
-    @FindBy(xpath = "//h5[.='Edit User Information']")
-    public WebElement editUserFormTitle;
-
     @FindBy(xpath = "//table[@id='tbl_users']//td[3]")
     public List<WebElement> userTable;
 
-
+    @FindBy(xpath = "//select[@id='user_status']")
+    public WebElement userStatusDropDown;
 
     public void addUser(){
         addUserLink.click();
@@ -97,5 +95,15 @@ public class UsersPage extends BasePage {
         inputFullName.clear();
         inputFullName.sendKeys( fullName);
         submitButton.click();
+    }
+
+    public List<String> userStatus(){
+        Select userStatus = new Select(userStatusDropDown);
+        List<WebElement> webElementList = userStatus.getOptions();
+        List<String> list = new ArrayList<>();
+        for (WebElement webElement : webElementList) {
+            list.add(webElement.getText());
+        }
+        return list;
     }
 }
