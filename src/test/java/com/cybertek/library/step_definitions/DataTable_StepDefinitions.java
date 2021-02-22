@@ -2,6 +2,7 @@ package com.cybertek.library.step_definitions;
 
 import com.cybertek.library.pages.BooksPage;
 import com.cybertek.library.pages.HomePage;
+import com.cybertek.library.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -32,9 +33,20 @@ public class DataTable_StepDefinitions {
         Assert.assertEquals(homePage.columnNamesList(), expectedList);
     }
 
-
     @Then("the user should see the table headers")
     public void theUserShouldSeeTheTableHeaders(List<String> expectedHeaderList) {
         Assert.assertEquals(booksPage.actualHeaderList(), expectedHeaderList);
     }
+
+    @When("the user click the book categories dropdown")
+    public void the_user_click_the_book_categories_dropdown() {
+       booksPage.bookCategoriesDropDown.click();
+    }
+
+    @Then("User should be able to see all categories")
+    public void user_should_be_able_to_see_all_categories(List<String> expectedBookCategories) {
+        BrowserUtils.sleep(3);
+        Assert.assertEquals(booksPage.bookCategories(), expectedBookCategories);
+    }
+
 }
