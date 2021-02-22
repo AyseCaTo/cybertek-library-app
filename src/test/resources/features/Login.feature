@@ -9,7 +9,6 @@ Feature: Login Functionality
       When User login as a librarian
       Then Dashboard should be displayed
 
-  @student
   Scenario: Login as a Student
       When User login as a Student
       Then Dashboard should be displayed

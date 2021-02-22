@@ -46,6 +46,7 @@ public class Login_StepDefinitions {
         i_enter_username(username);
         i_enter_password(password);
         click_the_sign_in_button();
+        BrowserUtils.sleep(3);
     }
 
     @When("User click the sign in button")
@@ -67,6 +68,15 @@ public class Login_StepDefinitions {
     public void there_should_be_users(int number) {
         Assert.assertEquals(number, homePage.howManyUsers());
     }
+
+    @Then("account holder name should be {string}")
+    public void account_holder_name_should_be(String expectedAccountHolderName) {
+        BrowserUtils.waitForVisibility(homePage.accountHolderName, 5);
+        String actualAccountHolderName = homePage.accountHolderName.getText();
+        Assert.assertEquals(actualAccountHolderName, expectedAccountHolderName);
+
+    }
+
 
 
 }
