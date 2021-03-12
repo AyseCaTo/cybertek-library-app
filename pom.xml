@@ -13,6 +13,9 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>Regression</id>
     <build>
         <plugins>
             <plugin>
@@ -32,36 +35,40 @@
                     <parallel>methods</parallel>
                     <threadCount>4</threadCount>
                     <perCoreThreadCount>false</perCoreThreadCount>
-                    <testFailureIgnore>true</testFailureIgnore>
+                    <testFailureIgnore>false</testFailureIgnore>
                     <includes>
-                        <include>**/CukesRunner*.java</include>
+                        <include>**/RegressionRunner*.java</include>
+                        <!--<include>**/CukesRunner*.java</include>
+                        <include>**/FailedTestRunner*.java</include>-->
                     </includes>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
-                <version>5.4.0</version>
-                <executions>
-                    <execution>
-                        <id>execution</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <projectName>Cucumber HTML Reports</projectName>
-                            <outputDirectory>${project.build.directory}</outputDirectory>
-                            <inputDirectory>${project.build.directory}</inputDirectory>
-                            <jsonFiles>
-                                <param>**/cucumber*.json</param>
-                            </jsonFiles>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>net.masterthought</groupId>-->
+<!--                <artifactId>maven-cucumber-reporting</artifactId>-->
+<!--                <version>5.4.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>execution</id>-->
+<!--                        <phase>verify</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>generate</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <projectName>Cucumber HTML Reports</projectName>-->
+<!--                            <outputDirectory>${project.build.directory}</outputDirectory>-->
+<!--                            <inputDirectory>${project.build.directory}</inputDirectory>-->
+<!--                            <jsonFiles>-->
+<!--                                <param>**/cucumber*.json</param>-->
+<!--                            </jsonFiles>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
+        </profile>
+    </profiles>
 
     <dependencies>
 
