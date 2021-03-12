@@ -5,7 +5,7 @@ Feature: Add users
     Given User is on the login page
     When User login as a librarian
 
-  @addUser
+  @addUser @smoke_test
   Scenario: Librarian should add users
     When User click on "Users" link
     Then Librarian add user

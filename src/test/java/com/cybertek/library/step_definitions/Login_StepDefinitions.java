@@ -71,7 +71,7 @@ public class Login_StepDefinitions {
 
     @Then("account holder name should be {string}")
     public void account_holder_name_should_be(String expectedAccountHolderName) {
-        BrowserUtils.waitForVisibility(homePage.accountHolderName, 5);
+        BrowserUtils.waitForVisibility(homePage.accountHolderName, 15);
         String actualAccountHolderName = homePage.accountHolderName.getText();
         Assert.assertEquals(actualAccountHolderName, expectedAccountHolderName);
 

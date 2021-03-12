@@ -14,8 +14,8 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "com/cybertek/library/step_definitions",
-        dryRun = true,
-        tags = "@status"
+        dryRun = false,
+        tags = ""
 )
 
 public class CukesRunner {

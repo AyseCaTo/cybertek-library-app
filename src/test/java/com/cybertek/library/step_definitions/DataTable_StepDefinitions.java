@@ -6,6 +6,7 @@ import com.cybertek.library.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -48,5 +49,17 @@ public class DataTable_StepDefinitions {
         BrowserUtils.sleep(3);
         Assert.assertEquals(booksPage.bookCategories(), expectedBookCategories);
     }
+
+    @Then("user should be able to filter the {string}")
+    public void user_should_be_able_to_filter_the(String category) {
+        Select categoryOfBook = new Select(booksPage.bookCategoriesDropDown);
+        categoryOfBook.selectByVisibleText(category);
+        BrowserUtils.sleep(3);
+        for (String s : booksPage.filterByCategory()) {
+            Assert.assertEquals(s, category);
+        }
+
+    }
+
 
 }

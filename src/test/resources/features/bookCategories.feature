@@ -31,6 +31,7 @@ Feature: Book Categories
       | Essay                   |
       | Memoir                  |
       | Poetry                  |
+    Then user should be able to filter the "Fable"
 
 
 

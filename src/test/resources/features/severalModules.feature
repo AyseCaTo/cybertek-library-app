@@ -16,6 +16,6 @@ Feature: Several Modules
   Scenario: Librarians  should have access to 3 modules
     When User login as a librarian
     Then User should see following modules
-      | Dashboard       |
-      | Users           |
-      | Books |
+      | Dashboard |
+      | Users     |
+      | Books     |

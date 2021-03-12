@@ -16,6 +16,9 @@ public class BooksPage extends BasePage {
     @FindBy(xpath = "//select[@id='book_categories']")
     public WebElement bookCategoriesDropDown;
 
+    @FindBy(xpath = "//table[@id='tbl_books']//td[5]")
+    public List<WebElement> bookCategories;
+
     @FindBy(xpath = "//a[@href='#borrowing-books']")
     public WebElement borrowingBooksLink;
 
@@ -46,5 +49,13 @@ public class BooksPage extends BasePage {
             list.add(borrowingBooksHeader.getText());
         }
         return list;
+    }
+
+    public List<String> filterByCategory(){
+        List<String> filtered = new ArrayList<>();
+        for (WebElement bookCategory : bookCategories) {
+            filtered.add(bookCategory.getText());
+        }
+        return filtered;
     }
 }
